@@ -59,31 +59,29 @@ export default function BlogLayout({ children, initialPosts }: BlogLayoutProps) 
   return (
     <div className="min-h-screen bg-linear-to-br from-rice-green-light via-background to-rice-golden-light pb-20">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-rice-green hover:text-rice-golden transition-colors"
-            >
-              <Home className="w-5 h-5" />
-              <span className="font-medium">صفحه اصلی</span>
-            </Link>
+      <header className="sticky top-0 z-40 border-b border-border bg-card/70 backdrop-blur-sm">
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-rice-green hover:text-rice-golden transition-colors"
+          >
+            <Home className="w-5 h-5" />
+            <span className="font-medium">صفحه اصلی</span>
+          </Link>
 
-            {isPostPage && (
-              <Link
-                href={"/BlogPost"}
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <BookOpen className="w-5 h-5" />
-                <span className="font-medium">همه مطالب</span>
-              </Link>
-            )}
-          </div>
+          {isPostPage && (
+            <Link
+              href={"/BlogPost"}
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <BookOpen className="w-5 h-5" />
+              <span className="font-medium">همه مطالب</span>
+            </Link>
+          )}
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-6">
+      <div className="mx-auto w-full max-w-5xl px-4 py-6 sm:px-6 lg:px-8">
         {isPostPage ? (
           children
         ) : (

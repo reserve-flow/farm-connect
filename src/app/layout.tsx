@@ -47,7 +47,6 @@ export default function RootLayout({
 	return (
 		<html lang="fa" dir="rtl">
 			<head>
-
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 				<link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
@@ -56,14 +55,12 @@ export default function RootLayout({
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 
 			</head>
-			<body className={`${inter.variable} ${vazirmatn.variable} antialiased`}>
+			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}>
 				<Providers>
-					<div className="flex flex-1 min-h-screen w-full">
-						<div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-							{children}
-						</div>
-						<BottomNav />
-					</div>
+					<main className="flex-1 w-full">
+						{children}
+					</main>
+					<BottomNav />
 				</Providers>
 			</body>
 		</html>

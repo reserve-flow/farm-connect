@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight";
 @tailwind utilities;
 
 @theme inline {
@@ -134,6 +133,9 @@
 }
 
 @layer base {
+	html, body {
+		min-height: 100%;
+	}
 
 	body {
 		@apply bg-background text-foreground font-sans antialiased;
