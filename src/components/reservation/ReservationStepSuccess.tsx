@@ -30,11 +30,11 @@ export function ReservationStepSuccess({
           <br />
           {isEditMode
             ? 'تغییرات شما ذخیره شد و کشاورز مطلع خواهد شد.'
-            : 'کشاورز به زودی با شما تماس خواهد گرفت.'}
+            : 'کشاورز یا نماینده وی با شما تماس خواهد گرفت.'}
         </DialogDescription>
       </div>
       <Button onClick={onClose} className="w-full">
-        بستن
+        خوبه
       </Button>
     </>
   );

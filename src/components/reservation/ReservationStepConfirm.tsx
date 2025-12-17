@@ -41,41 +41,43 @@ export function ReservationStepConfirm({
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-right">
+        <DialogTitle className="text-center">
           {isEditMode ? 'تایید ویرایش' : 'تایید رزرو'}
         </DialogTitle>
         <DialogDescription className="text-right">
           لطفاً اطلاعات رزرو خود را بررسی کنید
         </DialogDescription>
       </DialogHeader>
-      <div className="space-y-4 py-4">
-        <div className="rounded-lg bg-muted p-4 space-y-3 text-right">
+      <div className="space-y-4 py-4 text-right">
+        <div className="rounded-xl bg-muted/40 p-4 space-y-4">
+
+          {/* TL;DR Summary */}
           <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">محصول:</span>
-            <span className="font-medium">{lotTitle}</span>
+            <span className="text-sm text-muted-foreground">خلاصه سفارش</span>
+            <span className="text-lg font-bold">
+              {quantity} کیلوگرم · {lotTitle}
+            </span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">کشاورز:</span>
-            <span className="font-medium">{farmerName}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">مقدار:</span>
-            <span className="font-medium">{quantity} کیلوگرم</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">شماره تماس:</span>
-            <span className="font-medium">{phone}</span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">زمان تماس:</span>
-            <span className="font-medium">{callTimeLabel}</span>
-          </div>
-          <div className="pt-3 border-t border-border flex justify-between items-center">
-            <span className="text-sm text-muted-foreground">جمع کل:</span>
-            <span className="text-lg font-bold">${totalPrice.toFixed(2)}</span>
+
+          <div className="pt-3 border-t border-border space-y-3 text-sm">
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">کشاورز</span>
+              <span className="font-medium">{farmerName}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">شماره تماس</span>
+              <span className="font-medium">{phone}</span>
+            </div>
+
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">زمان تماس</span>
+              <span className="font-medium">{callTimeLabel}</span>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="flex gap-2">
         <Button onClick={onBack} variant="outline" className="flex-1" disabled={isLoading}>
           بازگشت

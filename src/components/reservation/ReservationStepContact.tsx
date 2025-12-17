@@ -40,17 +40,17 @@ export function ReservationStepContact({
   return (
     <>
       <DialogHeader>
-        <DialogTitle className="text-right">
+        <DialogTitle className="text-center">
           {isEditMode ? 'ویرایش اطلاعات تماس' : 'اطلاعات تماس'}
         </DialogTitle>
         <DialogDescription className="text-right">
-          برای هماهنگی تحویل، شماره تماس خود را وارد کنید
+          برای هماهنگی تحویل، شماره تماس خود را وارد نمائید
         </DialogDescription>
       </DialogHeader>
       <div className="space-y-4 py-4">
         <div className="space-y-2">
           <Label htmlFor="phone" className="text-right block">
-            شماره موبایل
+            شماره تماس
           </Label>
           <Input
             id="phone"
@@ -67,8 +67,8 @@ export function ReservationStepContact({
           )}
         </div>
 
-        <div className="space-y-2">
-          <Label className="text-right block">زمان مناسب تماس</Label>
+        <div className="space-y-2" dir='rtl'>
+          <Label className="text-right block">زمان مناسب برای تماس با شما</Label>
           <RadioGroup
             value={callTime}
             onValueChange={onCallTimeChange}
