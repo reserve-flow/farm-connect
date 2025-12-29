@@ -90,7 +90,11 @@ export const copy: Record<CopyKey, CopyBlock<any>> = {
 				"تصمیم گرفتیم همه چیز را ثبت کنیم: هر تعهد، هر تحویل، هر شکست با زمان و گزارش‌کننده.",
 				"پول در پلتفرم جابجا نمی‌شود؛ تنها شفافیت و سوابق ماندگار ارائه می‌شود تا تصمیم‌گیری آسان‌تر شود.",
 			],
-			outro: "اگر می‌خواهید به این ثبت عمومی بپیوندید یا نقدی دارید، همینجا بگویید. این پروژه با بازخورد شما کامل می‌شود.",
+			outro: {
+				before: "اگر می‌خواهید به این ثبت عمومی بپیوندید یا نقدی دارید، همینجا بگویید. این پروژه با ",
+				linkText: "بازخورد",
+				after: " شما کامل می‌شود.",
+			},
 		},
 		en: {
 			intro: "This platform exists to build trust between buyers and farmers — not to sell, not to handle money.",
@@ -99,7 +103,11 @@ export const copy: Record<CopyKey, CopyBlock<any>> = {
 				"We chose to record everything: each commitment, every delivery, every failure with time and reporter.",
 				"No payments flow through us; we only provide transparency and a durable record so decisions get easier.",
 			],
-			outro: "If you want to join the public ledger or challenge it, tell us. The project improves with your feedback.",
+			outro: {
+				before: "If you want to join the public ledger or challenge it, tell us. The project improves with your ",
+				linkText: "feedback",
+				after: ".",
+			},
 		},
 	},
 };

@@ -5,7 +5,7 @@ import { useLang } from "@/hooks/useLang";
 
 export default function StoryPage() {
 	const lang = useLang();
-	const story = t<{ intro: string; body: string[]; outro: string }>("story", lang);
+	const story = t<{ intro: string; body: string[]; outro: { before: string; linkText: string; after: string } }>("story", lang);
 
 	return (
 		<div className="mx-auto w-full max-w-screen-lg px-4 py-12 space-y-6">
@@ -26,7 +26,18 @@ export default function StoryPage() {
 				))}
 			</div>
 
-			<p className="text-sm font-medium text-foreground leading-6">{story.outro}</p>
+			<p className="text-sm font-medium text-foreground leading-6">
+				{story.outro.before}
+				<a
+					href="https://tally.so/r/ODlOa7"
+					target="_blank"
+					rel="noreferrer noopener"
+					className="text-primary underline underline-offset-4"
+				>
+					{story.outro.linkText}
+				</a>
+				{story.outro.after}
+			</p>
 		</div>
 	);
 }
