@@ -56,7 +56,7 @@ export default function RootLayout({
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 
 			</head>
-			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}>
+			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground p-5`}>
 				<Providers>
 					<div className="min-h-screen flex flex-col">
 						<Header />
