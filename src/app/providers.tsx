@@ -1,10 +1,11 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { useLang } from "@/hooks/useLang";
 
 function makeQueryClient() {
   return new QueryClient();
@@ -20,6 +21,13 @@ function getQueryClient() {
 
 export default function Providers({ children }: { children: ReactNode }) {
   const queryClient = getQueryClient();
+  const lang = useLang();
+
+  useEffect(() => {
+    const dir = lang === "fa" ? "rtl" : "ltr";
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", dir);
+  }, [lang]);
 
   // useEffect(() => {
   //   // Polyfill Buffer for gray-matter imports on the client

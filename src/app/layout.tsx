@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Vazirmatn } from "next/font/google";
 import Providers from "./providers";
-import { BottomNav } from "@/components/BottomNav";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "../styles/globals.css";
 
 const inter = Inter({
@@ -19,20 +20,20 @@ const vazirmatn = Vazirmatn({
 
 //TODO SEO
 export const metadata: Metadata = {
-	title: "خرید مستقیم برنج از کشاورز",
-	description: "رزرو مستقیم برنج از کشاورز تائید شده - برنج باکیفیت فریدونکنار - پیش خرید برنج شمال - قیمت مناسب برنج - برنج تضمینی",
+	title: "رزرو برنج مستقیم از کشاورز | تعهدات عمومی",
+	description: "ثبت و مشاهده تعهدات کشاورزان انتخاب‌شده. بدون پرداخت در پلتفرم. سابقه تحویل به‌صورت عمومی.",
 	authors: [{ name: "RiceDirect" }],
 	openGraph: {
-		title: "RiceDirect - Reserve Premium Rice Direct from Farmers",
+		title: "RiceDirect - Public commitments from selected farmers",
 		description:
-			"Reserve premium rice directly from verified farmers. Pre-order your harvest with transparent pricing and quality assurance.",
+			"View public commitments from selected farmers. No platform payments. Delivery outcomes stay visible.",
 		type: "website",
 		images: ["https://lovable.dev/opengraph-image-p98pqg.png"],//TODO update image
 	},
 	twitter: {
 		card: "summary_large_image",
 		site: "@RiceDirect",
-		images: ["https://lovable.dev/opengraph-image-p98pqg.png"],//TODO update image
+		images: ["https://lovable.dev/opengraph-image-p98pqg.png"], //TODO update image
 	},
 	icons: {
 		icon: "/favicon.svg",
@@ -57,10 +58,11 @@ export default function RootLayout({
 			</head>
 			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}>
 				<Providers>
+					<Header />
 					<main className="flex-1 w-full">
 						{children}
 					</main>
-					<BottomNav />
+					<Footer />
 				</Providers>
 			</body>
 		</html>
