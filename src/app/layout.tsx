@@ -58,11 +58,13 @@ export default function RootLayout({
 			</head>
 			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground`}>
 				<Providers>
-					<Header />
-					<main className="flex-1 w-full">
-						{children}
-					</main>
-					<Footer />
+					<div className="min-h-screen flex flex-col">
+						<Header />
+						<main className="flex-1 w-full">
+							{children}
+						</main>
+						<Footer />
+					</div>
 				</Providers>
 			</body>
 		</html>

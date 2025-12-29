@@ -27,22 +27,15 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-background text-muted-foreground py-8">
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-        <div className="text-center md:text-left flex flex-col space-y-2">
-          <p className="text-sm">
-            {footerLabels.transparencyLine[currentLang]}
-          </p>
-          <p className="text-xs">
-            © {new Date().getFullYear()} FarmConnect. {footerLabels.copyright[currentLang]}
-          </p>
-        </div>
-        <nav className="flex items-center space-x-4 lg:space-x-6">
+
+      <div className="mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+        <nav className="flex flex-col gap-5 w-full md:flex-1 pb-5 md:flex-row  md:items-center justify-between">
           {footerLinks.map((link) => (
             <Link
               key={link.href}
               href={withLang(link.href, currentLang)}
               className={cn(
-                'text-sm transition-colors hover:text-primary',
+                'text-sm transition-colors hover:text-primary w-full md:w-auto text-center md:text-left',
                 pathname === link.href || pathname?.startsWith(link.href + '/')
                   ? 'text-primary'
                   : 'text-muted-foreground',
@@ -52,6 +45,14 @@ export function Footer() {
             </Link>
           ))}
         </nav>
+      </div>
+      <div className="flex flex-col justify-center text-center pt-2">
+        <p className="text-xs">
+          {footerLabels.transparencyLine[currentLang]}
+        </p>
+        <p className="text-xs">
+          © {new Date().getFullYear()} .<strong>{footerLabels.title[currentLang]}</strong>. {footerLabels.copyright[currentLang]}
+        </p>
       </div>
     </footer>
   );
