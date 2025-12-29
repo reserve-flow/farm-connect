@@ -1,28 +1,23 @@
 "use client";
 
-/**
- * Custom hooks for farmers data fetching
- * Follows the same pattern as useBlogPosts for consistency
- */
+import { useQuery } from "@tanstack/react-query";
+import { commitmentsApi } from "@/services/api";
 
-import { useQuery } from '@tanstack/react-query';
-import { farmersApi } from '@/services/api';
-
-const STALE_TIME = 5 * 60 * 1000; // 5 minutes
+const STALE_TIME = 5 * 60 * 1000;
 
 export function useFarmers() {
-  return useQuery({
-    queryKey: ['farmers'],
-    queryFn: farmersApi.getAllFarmers,
-    staleTime: STALE_TIME,
-  });
+	return useQuery({
+		queryKey: ["farmers"],
+		queryFn: commitmentsApi.getFarmers,
+		staleTime: STALE_TIME,
+	});
 }
 
-export function useFarmer(farmerId: string | undefined) {
-  return useQuery({
-    queryKey: ['farmer', farmerId],
-    queryFn: () => (farmerId ? farmersApi.getFarmerById(farmerId) : null),
-    enabled: !!farmerId,
-    staleTime: STALE_TIME,
-  });
+export function useFarmerById(id: string | undefined) {
+	return useQuery({
+		queryKey: ["farmers", id],
+		queryFn: () => (id ? commitmentsApi.getFarmerById(id) : Promise.resolve(null)),
+		enabled: !!id,
+		staleTime: STALE_TIME,
+	});
 }

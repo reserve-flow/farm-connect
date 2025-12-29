@@ -7,6 +7,7 @@
 
 // Re-export all API functions
 export * as lotsApi from './lots';
+export * as commitmentsApi from './commitments';
 export * as farmersApi from './farmers';
 export * as reservationsApi from './reservations';
 export * as blogApi from './blog';
