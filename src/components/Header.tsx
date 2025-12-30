@@ -1,12 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils'; // Assuming cn is a utility for class merging
 import { Button } from '@/components/ui/button'; // Assuming Button component exists
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu'; // Assuming Dropdown components exist
-import { GlobeIcon } from '@radix-ui/react-icons'; // Assuming GlobeIcon is available
-import { navLabels, type Lang } from '@/constants/i18n';
+import { navLabels, toggleLang, type Lang } from '@/constants/i18n';
 import { useLang } from '@/hooks/useLang';
 import type { UrlObject } from 'url';
 
@@ -34,6 +32,7 @@ export function Header() {
   const pathname = usePathname() || '/';
   const searchParams = useSearchParams();
   const currentLang = useLang();
+  const router = useRouter();
 
   // Navigation links with translation support considerations
   const navItems = [
@@ -42,9 +41,9 @@ export function Header() {
     { key: 'story' as const, href: '/story' },
   ];
 
-  const langOptions: { code: Lang; label: string }[] = [
-    { code: 'fa', label: 'فارسی' },
-    { code: 'en', label: 'English' },
+  const langOptions: { code: Lang; label: string; flag: string }[] = [
+    { code: 'fa', label: 'فارسی', flag: '🇮🇷' },
+    { code: 'en', label: 'English', flag: '🇺🇸' },
   ];
 
   const withLang = (href: string, lang: Lang): UrlObject => {
@@ -56,13 +55,16 @@ export function Header() {
     };
   };
 
-  const withCurrentSearch = (lang: Lang): UrlObject => {
+  const activeLang = langOptions.find((lang) => lang.code === currentLang) ?? langOptions[0];
+
+  const handleToggleLang = () => {
+    const nextLang = toggleLang(currentLang);
     const params = new URLSearchParams(searchParams?.toString());
-    params.set('lang', lang);
-    return {
-      pathname,
-      query: Object.fromEntries(params),
-    };
+    params.set('lang', nextLang);
+
+    const nextUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
+    document.cookie = `lang=${nextLang}; path=/; max-age=${60 * 60 * 24 * 365}`;
+    router.push(nextUrl);
   };
 
   return (
@@ -88,31 +90,16 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-primary"
-              >
-                <GlobeIcon className="h-5 w-5" />
-                <span className="sr-only">Language</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              {langOptions.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.code}
-                  asChild
-                  disabled={lang.code === currentLang}
-                >
-                  <Link href={withCurrentSearch(lang.code)}>
-                    {lang.label}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={handleToggleLang}
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary"
+          >
+            <span className="text-lg leading-none">{activeLang.flag}</span>
+            <span className="text-xs font-medium uppercase">{activeLang.code}</span>
+            <span className="sr-only">{activeLang.label}</span>
+          </Button>
         </div>
       </div>
     </header>

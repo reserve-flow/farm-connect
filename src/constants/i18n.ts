@@ -16,9 +16,9 @@ export function toggleLang(current: Lang): Lang {
 }
 
 export const navLabels = {
-  harvests: { fa: "مشاهده برداشت‌ها", en: "View harvests" },
-  trust: { fa: "اعتماد چگونه کار می‌کند", en: "How trust works" },
-  story: { fa: "داستان", en: "Story" },
+  harvests: { fa: "موجودی", en: "Lots" },
+  trust: { fa: "چطور؟", en: "How" },
+  story: { fa: "چرا", en: "Why" },
 } as const;
 
 export const footerLabels = {

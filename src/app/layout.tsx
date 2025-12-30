@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "../styles/globals.css";
 import { Suspense } from "react";
+import { LangFade } from "@/components/LangFade";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -63,9 +64,11 @@ export default function RootLayout({
 						<Suspense fallback={<div className="h-16" />}>
 							<Header />
 						</Suspense>
-						<main className="flex-1 w-full">
-							{children}
-						</main>
+						<LangFade>
+							<main className="flex-1 w-full">
+								{children}
+							</main>
+						</LangFade>
 						<Footer />
 					</div>
 				</Providers>

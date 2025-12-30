@@ -49,7 +49,7 @@ export default function Page() {
 			<section className="grid gap-6 md:grid-cols-3" aria-labelledby="how-trust-works">
 				<div className="md:col-span-3">
 					<h2 id="how-trust-works" className="text-xl font-semibold">
-						{lang === "fa" ? "اعتماد چگونه کار می‌کند" : "How trust works"}
+						{lang === "fa" ? "بیانیه اعتماد" : "Trust"}
 					</h2>
 				</div>
 				{steps.map((item) => (
