@@ -51,7 +51,7 @@ export function Header() {
 
     const nextUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
     document.cookie = `lang=${nextLang}; path=/; max-age=${60 * 60 * 24 * 365}`;
-    router.push(nextUrl);
+    router.push(nextUrl as any);
   };
 
   return (

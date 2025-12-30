@@ -59,19 +59,19 @@ export default function RootLayout({
 
 			</head>
 			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground p-5`}>
-				<Providers>
-					<div className="min-h-screen flex flex-col">
-						<Suspense fallback={<div className="h-16" />}>
+				<Suspense fallback={<div className="min-h-screen" />}>
+					<Providers>
+						<div className="min-h-screen flex flex-col">
 							<Header />
-						</Suspense>
-						<LangFade>
-							<main className="flex-1 w-full">
-								{children}
-							</main>
-						</LangFade>
-						<Footer />
-					</div>
-				</Providers>
+							<LangFade>
+								<main className="flex-1 w-full">
+									{children}
+								</main>
+							</LangFade>
+							<Footer />
+						</div>
+					</Providers>
+				</Suspense>
 			</body>
 		</html>
 	);
