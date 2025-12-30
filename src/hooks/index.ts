@@ -5,7 +5,7 @@
  */
 
 export { useLots, useLot, useLotsByFarmer, useSearchLots } from './useLots';
-export { useFarmers, useFarmer } from './useFarmers';
+export { useFarmers, useFarmerById } from './useFarmers';
 export { useReservations, useCreateReservation, useUpdateReservation, useDeleteReservation } from './useReservations';
 export { useReservationForm } from './useReservationForm';
 export { useBlogPosts, useBlogPost, getPostsByTopic, searchPosts } from './useBlogPosts';

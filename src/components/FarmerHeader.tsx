@@ -1,15 +1,8 @@
 import { Check, Star } from "lucide-react";
+import type { Farmer } from "@/types";
 
 type FarmerHeaderProps = {
-  farmer: {
-    id: string;
-    name: string;
-    region: string;
-    verified: boolean;
-    avatar: string;
-    rating?: number;
-    followersCount?: number;
-  };
+  farmer: Farmer;
   isFollowing?: boolean;
   onFollow?: () => void;
 };

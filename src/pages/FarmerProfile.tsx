@@ -6,7 +6,7 @@ import { LotCard } from "@/components/LotCard";
 import { useState } from "react";
 import { toast } from "@/hooks/use-toast";
 import { FarmerProfileSkeleton } from "@/components/skeletons/FarmerProfileSkeleton";
-import { useFarmer } from "@/hooks/useFarmers";
+import { useFarmerById } from "@/hooks/useFarmers";
 import { useLotsByFarmer } from "@/hooks/useLots";
 import { useRouter } from "next/navigation";
 
@@ -15,7 +15,7 @@ export default function FarmerProfile({ id }: any) {
   const [isFollowing, setIsFollowing] = useState(false);
   const [activeTab, setActiveTab] = useState<"lots" | "about">("lots");
 
-  const { data: farmer, isLoading: isFarmerLoading } = useFarmer(id);
+  const { data: farmer, isLoading: isFarmerLoading } = useFarmerById(id);
   const { data: lots = [], isLoading: isLotsLoading } = useLotsByFarmer(id);
 
   const isLoading = isFarmerLoading || isLotsLoading;

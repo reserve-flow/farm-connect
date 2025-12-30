@@ -10,4 +10,7 @@ export interface Farmer {
   biography: string;
   status: FarmerStatus;
   avatar?: string;
+  verified?: boolean;
+  followersCount?: number;
+  rating?: number;
 }
