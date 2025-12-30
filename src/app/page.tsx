@@ -21,7 +21,7 @@ export default function Page() {
 		<div className="mx-auto w-full max-w-screen-lg px-4 py-12 space-y-12">
 			<section className="space-y-4">
 				<p className="text-sm font-medium text-primary">
-					{lang === "fa" ? "پلتفرم داوری و ثبت تعهدات" : "Registry for public commitments"}
+					{lang === "fa" ? "دفتر ثبت تعهدات کشاورز و خریدار" : "Registry for public commitments"}
 				</p>
 				<h1 className="text-3xl font-semibold leading-tight">
 					{hero.titleLine1}
