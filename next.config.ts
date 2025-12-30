@@ -8,9 +8,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "lovable.dev" },
     ],
   },
-  experimental: {
-    typedRoutes: true,
-  },
+  typedRoutes: true,
   webpack: (config) => {
     config.module.rules.push({
       test: /\.md$/,

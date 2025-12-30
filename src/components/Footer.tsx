@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils'; // Assuming cn is a utility for class merging
 import { footerLabels, type Lang } from '@/constants/i18n';
 import { useLang } from '@/hooks/useLang';
+import type { UrlObject } from 'url';
 
 export function Footer() {
   const pathname = usePathname();
@@ -18,11 +19,13 @@ export function Footer() {
 
   const currentLang = useLang();
 
-  const withLang = (href: string, lang: Lang) => {
+  const withLang = (href: string, lang: Lang): UrlObject => {
     const url = new URL(href, 'http://localhost');
     url.searchParams.set('lang', lang);
-    const query = url.searchParams.toString();
-    return `${url.pathname}${query ? `?${query}` : ''}`;
+    return {
+      pathname: url.pathname,
+      query: Object.fromEntries(url.searchParams),
+    };
   };
 
   return (

@@ -8,6 +8,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { GlobeIcon } from '@radix-ui/react-icons'; // Assuming GlobeIcon is available
 import { navLabels, type Lang } from '@/constants/i18n';
 import { useLang } from '@/hooks/useLang';
+import type { UrlObject } from 'url';
 
 // Placeholder for logo component
 const Logo = () => (
@@ -46,18 +47,22 @@ export function Header() {
     { code: 'en', label: 'English' },
   ];
 
-  const withLang = (href: string, lang: Lang) => {
+  const withLang = (href: string, lang: Lang): UrlObject => {
     const url = new URL(href, 'http://localhost');
     url.searchParams.set('lang', lang);
-    const query = url.searchParams.toString();
-    return `${url.pathname}${query ? `?${query}` : ''}`;
+    return {
+      pathname: url.pathname,
+      query: Object.fromEntries(url.searchParams),
+    };
   };
 
-  const withCurrentSearch = (lang: Lang) => {
+  const withCurrentSearch = (lang: Lang): UrlObject => {
     const params = new URLSearchParams(searchParams?.toString());
     params.set('lang', lang);
-    const query = params.toString();
-    return `${pathname}${query ? `?${query}` : ''}`;
+    return {
+      pathname,
+      query: Object.fromEntries(params),
+    };
   };
 
   return (

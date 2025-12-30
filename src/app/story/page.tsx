@@ -1,10 +1,13 @@
-"use client";
-
 import { t } from "@/constants/copy";
-import { useLang } from "@/hooks/useLang";
+import { resolveLang, type Lang } from "@/constants/i18n";
 
-export default function StoryPage() {
-	const lang = useLang();
+type PageProps = {
+	searchParams?: Promise<{ lang?: string }>;
+};
+
+export default async function StoryPage({ searchParams }: PageProps) {
+	const resolvedSearchParams = searchParams ? await searchParams : undefined;
+	const lang = resolveLang(resolvedSearchParams?.lang ?? null) as Lang;
 	const story = t<{ intro: string; body: string[]; outro: { before: string; linkText: string; after: string } }>("story", lang);
 
 	return (

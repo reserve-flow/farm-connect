@@ -4,10 +4,14 @@ import { StatusBadge } from "@/components/StatusBadge";
 import Link from "next/link";
 import { resolveLang, type Lang } from "@/constants/i18n";
 
-type PageProps = { params: { id: string }; searchParams?: { lang?: string } };
+type PageProps = {
+	params: Promise<{ id: string }>;
+	searchParams?: Promise<{ lang?: string }>;
+};
 
 export default async function Page({ params, searchParams }: PageProps) {
-	const { id } = params;
+	const { id } = await params;
+	const resolvedSearchParams = searchParams ? await searchParams : undefined;
 	const commitment = await commitmentsApi.getCommitmentById(id);
 	const farmer = commitment ? await commitmentsApi.getFarmerById(commitment.farmerId) : null;
 
@@ -15,7 +19,7 @@ export default async function Page({ params, searchParams }: PageProps) {
 		notFound();
 	}
 
-	const lang = resolveLang(searchParams?.lang ?? null) as Lang;
+	const lang = resolveLang(resolvedSearchParams?.lang ?? null) as Lang;
 
 	return (
 		<section className="mx-auto w-full max-w-screen-lg px-4 py-10 space-y-4">
@@ -31,7 +35,7 @@ export default async function Page({ params, searchParams }: PageProps) {
 						{commitment.deliveryWindowStart} — {commitment.deliveryWindowEnd}
 					</p>
 				</div>
-				<StatusBadge status={commitment.status} lang={lang as "fa" | "en"} />
+				<StatusBadge status={commitment.status} lang={lang} />
 			</header>
 			<div className="rounded-md border border-border bg-card p-4 space-y-2">
 				<p className="text-sm">

@@ -4,6 +4,7 @@ import Providers from "./providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "../styles/globals.css";
+import { Suspense } from "react";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -59,7 +60,9 @@ export default function RootLayout({
 			<body className={`${inter.variable} ${vazirmatn.variable} antialiased bg-background text-foreground p-5`}>
 				<Providers>
 					<div className="min-h-screen flex flex-col">
-						<Header />
+						<Suspense fallback={<div className="h-16" />}>
+							<Header />
+						</Suspense>
 						<main className="flex-1 w-full">
 							{children}
 						</main>
