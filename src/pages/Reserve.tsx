@@ -102,7 +102,7 @@ export default function Reserve() {
                       </div>
                       <div className="flex items-center gap-1.5 text-muted-foreground">
                         <Clock className="h-4 w-4" />
-                        <span>{getCallTimeLabel(reservation.callTime)}</span>
+                        <span>{getCallTimeLabel(reservation.callTime ?? "")}</span>
                       </div>
                     </div>
                     <div className="flex items-center justify-between pt-3 border-t border-border">
@@ -111,7 +111,7 @@ export default function Reserve() {
                     </div>
                     <div className="flex items-center justify-between mt-2">
                       <span className="text-sm text-muted-foreground">مبلغ کل:</span>
-                      <span className="text-lg font-bold">${reservation.totalPrice.toFixed(2)}</span>
+                      <span className="text-lg font-bold">${(reservation.totalPrice ?? 0).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -154,17 +154,17 @@ export default function Reserve() {
           open={editModalOpen}
           onOpenChange={setEditModalOpen}
           lot={{
-            id: reservations[editingIndex].lotId,
-            title: reservations[editingIndex].lotTitle,
+            id: reservations[editingIndex].lotId ?? "",
+            title: reservations[editingIndex].lotTitle ?? "",
             pricePerKg: reservations[editingIndex].pricePerKg || 1850,
           }}
           farmer={{
-            name: reservations[editingIndex].farmerName,
+            name: reservations[editingIndex].farmerName ?? "",
           }}
           initialData={{
-            quantity: reservations[editingIndex].quantity.toString(),
-            phone: reservations[editingIndex].phone,
-            callTime: reservations[editingIndex].callTime as CallTimeValue,
+            quantity: (reservations[editingIndex].quantity ?? 0).toString(),
+            phone: reservations[editingIndex].phone ?? "",
+            callTime: (reservations[editingIndex].callTime as CallTimeValue | undefined) ?? "morning_1",
           }}
           reservationIndex={editingIndex}
           onUpdate={handleReservationUpdate}

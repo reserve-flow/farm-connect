@@ -24,7 +24,7 @@ export function useReservationForm({ initialData, pricePerKg }: UseReservationFo
   const [step, setStep] = useState(1);
   const [quantity, setQuantity] = useState(initialData?.quantity || '5');
   const [phone, setPhone] = useState(initialData?.phone || '');
-  const [callTime, setCallTime] = useState<CallTimeValue>(initialData?.callTime || 'morning');
+  const [callTime, setCallTime] = useState<CallTimeValue>(initialData?.callTime || 'morning_1');
   const [phoneError, setPhoneError] = useState('');
 
   // Calculate total price
@@ -64,7 +64,7 @@ export function useReservationForm({ initialData, pricePerKg }: UseReservationFo
     if (!initialData) {
       setQuantity('5');
       setPhone('');
-      setCallTime('morning');
+      setCallTime('morning_1');
     }
     setPhoneError('');
   }, [initialData]);
