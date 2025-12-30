@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils'; // Assuming cn is a utility for class merging
 import { Button } from '@/components/ui/button'; // Assuming Button component exists
@@ -8,23 +9,9 @@ import { navLabels, toggleLang, type Lang } from '@/constants/i18n';
 import { useLang } from '@/hooks/useLang';
 import type { UrlObject } from 'url';
 
-// Placeholder for logo component
 const Logo = () => (
-  <Link href="/" className="flex items-center space-x-2">
-    {/* Replace with actual logo SVG or image */}
-    <svg
-      className="h-8 w-8"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m7 17l5-5 5 5" />
-      <path d="m7 10 5-5 5 5" />
-    </svg>
-    <span className="hidden font-bold md:inline">FarmConnect</span>
+  <Link href="/" className="flex items-center pb-5 pt-2">
+    <Image src="/logo.svg" alt="FarmConnect logo" width={64} height={64} priority />
   </Link>
 );
 
@@ -97,7 +84,6 @@ export function Header() {
             className="flex items-center gap-2 text-muted-foreground hover:text-primary"
           >
             <span className="text-lg leading-none">{activeLang.flag}</span>
-            <span className="text-xs font-medium uppercase">{activeLang.code}</span>
             <span className="sr-only">{activeLang.label}</span>
           </Button>
         </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none"
+     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+  <!-- availability / direct trade baseline -->
+  <circle cx="34" cy="96" r="3"/>
+  <circle cx="94" cy="96" r="3"/>
+  <path d="M38 96h52"/>
+
+  <!-- central lot / seedling (grows through entire box) -->
+  <path d="M64 96V75"/>
+  <path d="M64 75c-8-2-16-10-18-24 14 3 18 14 18 24z"/>
+  <path d="M64 75c8-2 16-10 18-24-14 3-18 14-18 24z"/>
+
+</svg>
